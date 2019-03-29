@@ -29,5 +29,15 @@ public interface IAdUnitService {
      * 创建推广单元 地域限制
      */
 
+    AdUnitDistrictResponse createAdUnitDistrict(AdUnitDistrictRequest unitDistrictRequest);
+
+
+    /**
+     * 单元-创意
+     */
+
+
+    CreativeUnitResponse createCreativeUnit(CreativeUnitRequest request);
+
 
 }

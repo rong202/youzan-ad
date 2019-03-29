@@ -42,13 +42,13 @@ public class AdPlan {
     @Column(name = "update_time",nullable = false)
     private Date updateTime;
 
-    @Column(name = "start_time",nullable = false)
+    @Column(name = "start_date",nullable = false)
     private  Date startTime;
 
     /**
      * 推广计划得结束时间
      */
-    @Column(name = "end_time",nullable = false)
+    @Column(name = "end_date",nullable = false)
     private Date endTime;
 
 
