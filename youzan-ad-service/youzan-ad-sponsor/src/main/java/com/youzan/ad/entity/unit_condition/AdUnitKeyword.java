@@ -13,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by Qinyi.
+ * Created by baimugudu on 2019/3/26
+ * 关键词限制
  */
 @Data
 @NoArgsConstructor
@@ -31,6 +32,9 @@ public class AdUnitKeyword {
     @Column(name = "unit_id", nullable = false)
     private Long unitId;
 
+    /**
+     * 关键词
+     */
     @Basic
     @Column(name = "keyword", nullable = false)
     private String keyword;

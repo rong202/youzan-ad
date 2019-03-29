@@ -14,6 +14,7 @@ import com.youzan.ad.vo.AdPlanRequest;
 import com.youzan.ad.vo.AdPlanResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -32,6 +33,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
     AdPlanRepository planRepository;
 
     @Override
+    @Transactional
     public AdPlanResponse createPlan(AdPlanRequest planRequest) throws AdException {
 
         //验证参数是否合法
@@ -71,6 +73,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
     }
 
     @Override
+   @Transactional
     public AdPlanResponse updatePlan(AdPlanRequest planRequest) throws AdException {
 
         //验证参数是否合法
@@ -126,6 +129,7 @@ public class AdPlanServiceImpl implements IAdPlanService {
     }
 
     @Override
+    @Transactional
     public void deletePlan(AdPlanRequest planRequest) throws AdException {
 
 

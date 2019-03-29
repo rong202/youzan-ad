@@ -13,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by Qinyi.
+ * Created by baimugudu on 2019/3/26
+ * 地域限制
  */
 @Data
 @NoArgsConstructor
@@ -31,10 +32,17 @@ public class AdUnitDistrict {
     @Column(name = "unit_id", nullable = false)
     private Long unitId;
 
+    /**
+     * 省
+     */
     @Basic
     @Column(name = "province", nullable = false)
     private String province;
 
+
+    /**
+     * 市
+     */
     @Basic
     @Column(name = "city", nullable = false)
     private String city;

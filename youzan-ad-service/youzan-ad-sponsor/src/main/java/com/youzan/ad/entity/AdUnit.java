@@ -35,9 +35,15 @@ public class AdUnit {
     @Column(name = "unit_status",nullable = false)
     private Integer unitStatus;
 
+    /**
+     * 广告位类型
+     */
     @Column(name = "position_type",nullable = false)
     private Integer positionType;
 
+    /**
+     * 预算
+     */
     @Column(name = "budget",nullable = false)
     private Long budget;
 

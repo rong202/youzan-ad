@@ -16,6 +16,8 @@ public class Constants {
 
         public static final String  CAN_NOT_FIND_PLAN = "计划不存在";
 
+        public static final String  THE_UNIT_ALREADY_EXISTS = "该推广计划下的推广单元已存在";
+
 
     }
 

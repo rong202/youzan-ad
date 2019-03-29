@@ -13,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by Qinyi.
+ * Created by baimugudu on 2019/3/26
+ * 兴趣
  */
 @Data
 @NoArgsConstructor
@@ -27,10 +28,16 @@ public class AdUnitIt {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    /**
+     * 关联推广单元id
+     */
     @Basic
     @Column(name = "unit_id", nullable = false)
     private Long unitId;
 
+    /**
+     * 兴趣标签
+     */
     @Basic
     @Column(name = "it_tag", nullable = false)
     private String itTag;
