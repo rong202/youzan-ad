@@ -1,12 +1,12 @@
 server:
-  port: 8073
+  port: 8084
   servlet:
-    context-path: /ad-sponsor
+    context-path: /ad-search
 
 
 spring:
   application:
-    name: ad-sponsor
+    name: ad-search
   jpa:
     show-sql: true
     hibernate:
@@ -25,3 +25,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/
+
+feign:
+  hystrix:
+    enabled:true
