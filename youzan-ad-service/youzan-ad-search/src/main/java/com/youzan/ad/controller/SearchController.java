@@ -1,4 +1,4 @@
-package com.youzan.ad.Controller;
+package com.youzan.ad.controller;
 
 import com.youzan.ad.annotation.IgnoreResponseAdvice;
 import com.youzan.ad.client.SponeorClient;
