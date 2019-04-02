@@ -48,13 +48,13 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
     @Override
     public void add(String key, Set<Long> value) {
 
-        Set<Long> set = CommonUtils.getVlaue(key, keyWordUnitMap,
+        Set<Long> set = CommonUtils.getorCreate(key, keyWordUnitMap,
                 ConcurrentSkipListSet::new
         );
         set.addAll(value);
 
         for (Long unitId : value) {
-            Set<String> keyWordSet = CommonUtils.getVlaue(unitId, unitKeyWordMap,
+            Set<String> keyWordSet = CommonUtils.getorCreate(unitId, unitKeyWordMap,
                     ConcurrentSkipListSet::new
             );
             keyWordSet.add(key);
@@ -85,13 +85,13 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
 
     @Override
     public void delete(String key, Set<Long> value) {
-        Set<Long> set = CommonUtils.getVlaue(key, keyWordUnitMap,
+        Set<Long> set = CommonUtils.getorCreate(key, keyWordUnitMap,
                 ConcurrentSkipListSet::new
         );
         set.removeAll(value);
 
         for (Long unitId : value) {
-            Set<String> keyWordSet = CommonUtils.getVlaue(unitId, unitKeyWordMap,
+            Set<String> keyWordSet = CommonUtils.getorCreate(unitId, unitKeyWordMap,
                     ConcurrentSkipListSet::new
             );
             keyWordSet.remove(key);

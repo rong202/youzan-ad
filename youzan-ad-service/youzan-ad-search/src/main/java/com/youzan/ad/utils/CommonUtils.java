@@ -8,7 +8,7 @@ import java.util.function.Supplier;
  */
 public class CommonUtils {
 
-    public static <K,V> V getVlaue(K key, Map<K,V> map,
+    public static <K,V> V getorCreate(K key, Map<K,V> map,
                                    Supplier<V> supplier){
         return map.computeIfAbsent(key,
                k -> supplier.get() );
