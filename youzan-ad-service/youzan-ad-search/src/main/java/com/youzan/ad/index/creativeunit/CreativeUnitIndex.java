@@ -1,7 +1,9 @@
 package com.youzan.ad.index.creativeunit;
 
 import com.youzan.ad.index.IndexAware;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +14,8 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * Created by baimugudu on 2019/4/2
  * String:adId-unitId
  */
-
+@Component
+@Slf4j
 public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> {
 
     private static Map<String,CreativeUnitObject> objectMap;
@@ -63,10 +66,25 @@ public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> 
     @Override
     public void update(String key, CreativeUnitObject value) {
 
+        log.error("no support update");
     }
 
     @Override
     public void delete(String key, CreativeUnitObject value) {
+
+        objectMap.remove(key);
+        Set<Long> unitSet = creativeUnitMap.get(value.getAdId());
+
+        if(!CollectionUtils.isEmpty(unitSet)){
+            unitSet.remove(value.getUnitId());
+        }
+
+        Set<Long> adIdSet = unitCraetiveMap.get(value.getUnitId());
+        if(CollectionUtils.isNotEmpty(adIdSet)){
+            adIdSet.remove(value.getAdId());
+        }
+
+
 
     }
 }
