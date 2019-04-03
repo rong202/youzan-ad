@@ -13,6 +13,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 /**
  * Created by baimugudu on 2019/4/2
  * String:adId-unitId
+ * 创意-推广单元中间表：正向索引
  */
 @Component
 @Slf4j
@@ -46,7 +47,7 @@ public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> 
 
         if(CollectionUtils.isEmpty(unitSet)){
             unitSet = new ConcurrentSkipListSet<>();
-            creativeUnitMap.put(value.getUnitId(),unitSet);
+            creativeUnitMap.put(value.getAdId(),unitSet);
         }
 
         unitSet.add(value.getUnitId());
@@ -54,7 +55,7 @@ public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> 
         Set adIdSet = unitCraetiveMap.get(value.getUnitId());
         if(CollectionUtils.isEmpty(adIdSet)){
             adIdSet = new ConcurrentSkipListSet<>();
-            unitCraetiveMap.put(value.getAdId(),adIdSet);
+            unitCraetiveMap.put(value.getUnitId(),adIdSet);
         }
 
         adIdSet.add(value.getAdId());

@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by baimugudu on 2019/4/2
+ * 推广单元：正向索引
  */
 
 @Component

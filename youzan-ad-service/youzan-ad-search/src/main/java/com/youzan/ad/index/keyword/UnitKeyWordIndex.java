@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * Created by baimugudu on 2019/4/2
+ * 关键词的限制：倒排索引
  */
 
 @Component
@@ -89,6 +90,10 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
                 ConcurrentSkipListSet::new
         );
         set.removeAll(value);
+
+//        value.forEach(unitId ->  CommonUtils.getorCreate(unitId, unitKeyWordMap,
+//                ConcurrentSkipListSet::new
+//        ).remove(key));
 
         for (Long unitId : value) {
             Set<String> keyWordSet = CommonUtils.getorCreate(unitId, unitKeyWordMap,

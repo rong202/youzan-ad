@@ -9,6 +9,7 @@
         <module name="youzan-ad-common" />
         <module name="youzan-ad-erueka" />
         <module name="youzan-ad-gateway" />
+        <module name="youzan-ad-search" />
         <module name="youzan-ad-sponsor" />
       </profile>
     </annotationProcessing>

@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by baimugudu on 2019/4/2
+ * 推广计划：正向索引
  */
 
 @Component
