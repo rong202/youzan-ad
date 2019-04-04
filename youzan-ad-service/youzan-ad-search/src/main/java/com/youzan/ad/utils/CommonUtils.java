@@ -14,4 +14,18 @@ public class CommonUtils {
                k -> supplier.get() );
 
     }
+
+
+    public static String stringConcat(String... args){
+
+        StringBuilder sb = new StringBuilder();
+        for(String arg:args){
+            sb.append(arg);
+            sb.append("-");
+        }
+
+       return  sb.deleteCharAt(sb.length()-1).toString();
+
+
+    }
  }

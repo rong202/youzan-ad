@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 @Slf4j
 public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> {
 
+    //<adId-unitid,object>
     private static Map<String,CreativeUnitObject> objectMap;
 
    // <adId,unit set>

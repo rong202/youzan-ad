@@ -121,6 +121,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
             ids = unitKeywordRepository.saveAll(unitKeywordList).stream().map(
                     AdUnitKeyword::getId
             ).collect(Collectors.toList());
+                    //collect(Collectors.toList());
 
         }
         return new AdUnitKeywordResponse(ids);
