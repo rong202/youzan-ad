@@ -16,4 +16,7 @@ public class AdUnitDistrictTable {
     private Long unitId;
     private String province;
     private String city;
+
+
+
 }
