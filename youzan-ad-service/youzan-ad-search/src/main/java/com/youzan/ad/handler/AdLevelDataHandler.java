@@ -20,6 +20,7 @@ import com.youzan.ad.index.keyword.UnitKeyWordObject;
 import com.youzan.ad.mysql.constant.OpType;
 import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -29,6 +30,7 @@ import java.util.HashSet;
  */
 
 @Slf4j
+@Component
 public class AdLevelDataHandler {
 
 

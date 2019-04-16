@@ -68,6 +68,7 @@ public class BinLogServiceTest {
                     if(data instanceof UpdateRowsEventData){
                         log.info("update--------------------");
                         log.info(data.toString());
+
                     }
 
                     if(data instanceof WriteRowsEventData){
