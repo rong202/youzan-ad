@@ -20,5 +20,7 @@ public class MySqlRowData {
     private String tableName;
     private String level;
     private OpType opType;
+
+    //字段-》值
     private List<Map<String,String>> fieldValueMap = new ArrayList<Map<String,String>>();
 }

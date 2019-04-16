@@ -58,7 +58,7 @@ public class BinLogServiceTest {
                 "root",
                 "root"
         );
-        client.setBinlogFilename("mysql-bin.000006");
+       // client.setBinlogFilename("mysql-bin.000006");
 
         client.registerEventListener(
                 event ->
