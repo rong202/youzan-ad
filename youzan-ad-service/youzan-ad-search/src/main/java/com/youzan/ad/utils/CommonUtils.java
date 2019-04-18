@@ -5,6 +5,7 @@ import org.apache.commons.lang.time.DateUtils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -37,7 +38,7 @@ public class CommonUtils {
     public static Date parseStringDate(String dataString){
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
-                "EEE MMM dd HH:mm:ss zzz yyyy"
+                "EEE MMM dd HH:mm:ss zzz yyyy", Locale.US
         );
 
         try {

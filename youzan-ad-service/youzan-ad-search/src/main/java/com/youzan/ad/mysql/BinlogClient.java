@@ -17,7 +17,7 @@ public class BinlogClient {
     BinlogConfig config;
     @Autowired
     AggregationListener listener;
-    @Autowired
+
     private  BinaryLogClient client;
 
 
