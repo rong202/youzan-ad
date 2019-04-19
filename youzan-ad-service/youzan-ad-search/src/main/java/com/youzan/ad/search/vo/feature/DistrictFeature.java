@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * Created by baimugudu on 2019/4/18
  */
@@ -12,8 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DistrictFeature {
+    private List<ProviceAndCity> proviceAndCities;
 
 
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ProviceAndCity{
+    private String provice;
+    private String city;
+    }
 
 
 

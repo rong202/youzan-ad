@@ -1,14 +1,18 @@
 package com.youzan.ad.index.district;
 
 import com.youzan.ad.index.IndexAware;
+import com.youzan.ad.search.vo.feature.DistrictFeature;
 import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.stream.Collectors;
 
 /**
  * Created by baimugudu on 2019/4/3
@@ -27,6 +31,25 @@ public class UnitDistrictIndex implements IndexAware<String, Set<Long>> {
     static {
         districtUnitMap = new ConcurrentHashMap<>();
         unitDistrictMap = new ConcurrentHashMap<>();
+    }
+
+
+    public boolean match(Long adUnitid, List<DistrictFeature.ProviceAndCity> districts){
+
+        if(unitDistrictMap.containsKey(adUnitid)&& CollectionUtils.isNotEmpty(
+                districts
+        )){
+            Set<String> strings = unitDistrictMap.get(adUnitid);
+
+            List<Object> collect = districts.stream().map(
+                    d ->
+                        CommonUtils.stringConcat(d.getProvice(), d.getCity())
+            ).collect(Collectors.toList());
+
+            return CollectionUtils.isSubCollection(collect,strings);
+        }
+        return false;
+
     }
 
 

@@ -1,9 +1,10 @@
 package com.youzan.ad.index.adunit;
 
 import com.youzan.ad.index.IndexAware;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -19,6 +20,69 @@ public class AdUnitIndex implements IndexAware<Long,AdUnitObject> {
     static {
         objectMap = new ConcurrentHashMap<>();
     }
+
+
+//    public List<AdUnitObject> fetch(Collection<Long> unitids){
+//
+//        if(CollectionUtils.isEmpty(unitids))
+//        {
+//            return new ArrayList<>();
+//        }
+//
+//        ArrayList<AdUnitObject> objects = new ArrayList<>();
+//
+//
+//        unitids.forEach(
+//                i->{
+//                    AdUnitObject adUnitObject = objectMap.get(i);
+//                    objects.add(adUnitObject);
+//                }
+//        );
+//
+//        return objects;
+//
+//    }
+//
+
+
+
+
+
+
+    public Set<Long> match(Integer positionType){
+        HashSet<Long> adUnitIdSet = new HashSet<>();
+
+        objectMap.forEach((k,v)->{
+            if(AdUnitObject.isAdSlotTypeOK(positionType,v.getPositionType())){
+                adUnitIdSet.add(k);
+            }
+        });
+         return adUnitIdSet;
+    }
+
+
+
+    public List<AdUnitObject>  fetch(Collection<Long> adUnitIds){
+        if(CollectionUtils.isEmpty(adUnitIds)){
+            return null;
+        }
+        ArrayList<AdUnitObject> adUnitObjects = new ArrayList<>();
+        adUnitIds.forEach(
+                u->{
+                    AdUnitObject adUnitObject = get(u);
+                    if(null==adUnitObject){
+                        return ;
+                    }
+
+                    adUnitObjects.add(adUnitObject);
+                }
+        );
+        return adUnitObjects;
+
+    }
+
+
+
 
     @Override
     public AdUnitObject get(Long key) {

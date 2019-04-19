@@ -3,8 +3,10 @@ package com.youzan.ad.index.interest;
 import com.youzan.ad.index.IndexAware;
 import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,6 +28,19 @@ public class UnitItIndex implements IndexAware<String, Set<Long>> {
     static {
         itTagUnitMap = new ConcurrentHashMap<>();
         unitItTagMap = new ConcurrentHashMap<>();
+    }
+
+
+    public  boolean match(Long adUnitId, List<String> ids){
+        if(unitItTagMap.containsKey(adUnitId)&& CollectionUtils.isNotEmpty(
+                ids
+        )){
+            Set<String> strings = unitItTagMap.get(adUnitId);
+            return CollectionUtils.isSubCollection(ids,strings);
+        }
+
+        return false;
+
     }
 
     @Override

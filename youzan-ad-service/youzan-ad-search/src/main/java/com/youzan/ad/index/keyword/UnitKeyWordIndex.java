@@ -3,10 +3,12 @@ package com.youzan.ad.index.keyword;
 import com.youzan.ad.index.IndexAware;
 import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,6 +30,16 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
     static {
         keyWordUnitMap = new ConcurrentHashMap<>();
         unitKeyWordMap = new ConcurrentHashMap<>();
+    }
+
+    public  boolean match(Long unitId, List<String> keywordsList){
+        if(unitKeyWordMap.containsKey(unitId)&& CollectionUtils.isNotEmpty(
+                keywordsList
+        )){
+            Set<String> strings = unitKeyWordMap.get(unitId);
+            return CollectionUtils.isSubCollection(keywordsList,strings);
+        }
+        return false;
     }
 
 
@@ -102,6 +114,9 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
             keyWordSet.remove(key);
 
         }
+
+
+
 
 
     }

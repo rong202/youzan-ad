@@ -52,13 +52,13 @@ public class AdLevelDataHandler {
     }
     public static void handlevel2(AdCreativeTbale adCreativeTbale,OpType type){
         CreativeObject creativeObject = new CreativeObject(
-                adCreativeTbale.getAdId(),
-                adCreativeTbale.getName(),
-                adCreativeTbale.getType(),
-                adCreativeTbale.getMaterialType(),
-                adCreativeTbale.getHeight(),
-                adCreativeTbale.getWidth(),
-                adCreativeTbale.getAuditStatus()
+//                adCreativeTbale.getAdId(),
+//                adCreativeTbale.getName(),
+//                adCreativeTbale.getType(),
+//                adCreativeTbale.getMaterialType(),
+//                adCreativeTbale.getHeight(),
+//                adCreativeTbale.getWidth(),
+//                adCreativeTbale.getAuditStatus()
         );
 
         handleBinLongEvent(DataTable.of(CreativeIndex.class),

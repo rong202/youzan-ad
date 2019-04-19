@@ -27,6 +27,8 @@ public class CreativeObject {
 
     private Integer auditStatus;
 
+    private String adUrl;
+
 
     public void update(CreativeObject newObject){
 

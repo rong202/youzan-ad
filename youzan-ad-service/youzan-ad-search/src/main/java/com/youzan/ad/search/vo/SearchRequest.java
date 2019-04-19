@@ -1,5 +1,9 @@
 package com.youzan.ad.search.vo;
 
+import com.youzan.ad.search.vo.feature.DistrictFeature;
+import com.youzan.ad.search.vo.feature.FeatureRelation;
+import com.youzan.ad.search.vo.feature.ItFeature;
+import com.youzan.ad.search.vo.feature.KeywordFeature;
 import com.youzan.ad.search.vo.media.AdSlot;
 import com.youzan.ad.search.vo.media.App;
 import com.youzan.ad.search.vo.media.Device;
@@ -51,6 +55,11 @@ public class SearchRequest {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class FeatureInfo{
+
+        private KeywordFeature keywordFeature;
+        private DistrictFeature districtFeature;
+        private ItFeature itFeature;
+        private FeatureRelation featureRelation = FeatureRelation.AND;
 
     }
 
