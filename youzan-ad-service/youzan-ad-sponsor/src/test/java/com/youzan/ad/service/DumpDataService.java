@@ -178,7 +178,7 @@ public class DumpDataService {
                                 c.getHeight(),
                                 c.getWidth(),
                                 c.getAuditStatus(),
-                                null
+                                c.getUrl()
                         )
                 )
         );

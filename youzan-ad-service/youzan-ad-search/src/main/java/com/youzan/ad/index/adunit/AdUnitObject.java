@@ -4,6 +4,7 @@ import com.youzan.ad.index.adplan.AdPlanObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Created by baimugudu on 2019/4/2
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Slf4j
 public class AdUnitObject {
 
     private Long unitId;
@@ -45,26 +47,42 @@ public class AdUnitObject {
     }
 
     public static  boolean isKAIPING(int positionType){
+        log.info(positionType+"");
+        log.info((positionType & AdUnitConstants.POSITION_TYPE.KAIPING)+"");
+        log.info(((positionType & AdUnitConstants.POSITION_TYPE.KAIPING)>0)+"");
         return (positionType & AdUnitConstants.POSITION_TYPE.KAIPING)>0;
     }
 
     public static  boolean isTIEPIAN(int positionType){
+        log.info(positionType+"");
+        log.info((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN)+"");
+        log.info(((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN)>0)+"");
         return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN)>0;
     }
 
     public static  boolean isTIEPIAN_MIDDLE(int positionType){
+        log.info(positionType+"");
+        log.info((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_MIDDLE)+"");
+        log.info(((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_MIDDLE)>0)+"");
         return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_MIDDLE)>0;
     }
 
     public static  boolean isTIEPIAN_PAUSE(int positionType){
+        log.info(positionType+"");
+        log.info((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_PAUSE)+"");
+        log.info(((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_PAUSE)>0)+"");
         return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_PAUSE)>0;
     }
 
     public static  boolean isTIEPIAN_POST(int positionType){
+        log.info(positionType+"");
+        log.info((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_POST)+"");
+        log.info(((positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_POST)>0)+"");
         return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_POST)>0;
     }
 
     public static  boolean isAdSlotTypeOK(int slotType,int positionType){
+        log.info("{}-{}",slotType,positionType);
         switch (slotType){
             case AdUnitConstants.POSITION_TYPE.KAIPING:
                 return isKAIPING(positionType);

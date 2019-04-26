@@ -22,6 +22,7 @@ import com.youzan.ad.search.vo.feature.KeywordFeature;
 import com.youzan.ad.search.vo.media.AdSlot;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
@@ -30,6 +31,7 @@ import java.util.*;
  */
 
 @Slf4j
+@Service
 public class SearchImpl implements ISearch {
 
 
@@ -68,7 +70,9 @@ public class SearchImpl implements ISearch {
                     AdUnitIndex.class
             ).match(adSlot.getPositionType());
 
-            if (relation == FeatureRelation.AND) {
+            log.info("adUnitIdSet----{}",adUnitIdSet);
+
+            if (relation .equals( FeatureRelation.AND) ){
 
                 filterKeywordFeature(adUnitIdSet, keywordFeature);
                 filterDistrictFeature(adUnitIdSet, districtFeature);
@@ -83,17 +87,22 @@ public class SearchImpl implements ISearch {
                         districtFeature,
                         itFeature
                 );
+
+                log.info("targetUnitIdSet->{}",targetUnitIdSet);
             }
 
             List<AdUnitObject> unitObjects =
                     DataTable.of(AdUnitIndex.class).fetch(targetUnitIdSet);
-
+            log.info("unitObjects->{}",unitObjects);
             filterAdUnitAndPlanStatus(unitObjects, CommonStatus.VALID);
-
+            log.info("unitObjects->{}",unitObjects);
             List<Long> adIds = DataTable.of(CreativeUnitIndex.class)
                     .selectAds(unitObjects);
+            log.info("adIds----------{}",adIds);
+
             List<CreativeObject> creatives = DataTable.of(CreativeIndex.class)
                     .fetch(adIds);
+            log.info("creatives----------{}",creatives);
 
             // 通过 AdSlot 实现对 CreativeObject 的过滤
             filterCreativeByAdSlot(
@@ -102,6 +111,9 @@ public class SearchImpl implements ISearch {
                     adSlot.getHeight(),
                     adSlot.getType()
             );
+
+
+            log.info("通过 AdSlot 实现对 CreativeObject 的过滤-{}",creatives);
 
             adSlot2Ads.put(
                     adSlot.getAdSlotCode(), buildCreativeResponse(creatives)
@@ -200,15 +212,20 @@ public class SearchImpl implements ISearch {
     private void filterAdUnitAndPlanStatus(List<AdUnitObject> unitObjects,
                                            CommonStatus status) {
 
+        log.info("List<AdUnitObject> unitObjects->{}",unitObjects);
+        log.info("CommonStatus->{}",status);
+
         if (CollectionUtils.isEmpty(unitObjects)) {
             return;
         }
 
-        CollectionUtils.filter(
+      /*  CollectionUtils.filter(
                 unitObjects,
                 object -> object.getUnitStatus().equals(status.getStatus())
                         && object.getAdPlanObject().getPlanStatus().equals(status.getStatus())
-        );
+        );*/
+
+        log.info("---------------------------------");
     }
 
     private void filterCreativeByAdSlot(List<CreativeObject> creatives,
@@ -220,14 +237,14 @@ public class SearchImpl implements ISearch {
             return;
         }
 
-        CollectionUtils.filter(
+    /*    CollectionUtils.filter(
                 creatives,
                 creative ->
                         creative.getAuditStatus().equals(CommonStatus.VALID.getStatus())
                                 && creative.getWidth().equals(width)
                                 && creative.getHeight().equals(height)
                                 && type.contains(creative.getType())
-        );
+        );*/
     }
 
     private List<SearchResponse.Creative> buildCreativeResponse(

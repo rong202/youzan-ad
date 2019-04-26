@@ -42,7 +42,11 @@ public class CreativeIndex implements IndexAware<Long,CreativeObject> {
         List<CreativeObject> result = new ArrayList<>();
 
         adIds.forEach(u -> {
+            log.info("uuuuuuuuu->{}",u);
+
             CreativeObject object = get(u);
+
+            log.info("CreativeObject object->{}",object);
             if (null == object) {
                 log.error("CreativeObject not found: {}", u);
                 return;

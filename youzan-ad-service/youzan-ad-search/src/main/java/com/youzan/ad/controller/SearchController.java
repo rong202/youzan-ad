@@ -1,9 +1,13 @@
 package com.youzan.ad.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.youzan.ad.annotation.IgnoreResponseAdvice;
 import com.youzan.ad.client.SponeorClient;
 import com.youzan.ad.client.vo.AdPlanGetRequest;
 import com.youzan.ad.client.vo.AdPlanResponse;
+import com.youzan.ad.search.ISearch;
+import com.youzan.ad.search.vo.SearchRequest;
+import com.youzan.ad.search.vo.SearchResponse;
 import com.youzan.ad.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +48,9 @@ public class SearchController {
     @Autowired
     SponeorClient sponeorClient;
 
+    @Autowired
+    ISearch search;
+
     @PostMapping
     @IgnoreResponseAdvice
     public CommonResponse<List<AdPlanResponse>> findPlan(
@@ -51,4 +58,10 @@ public class SearchController {
         return sponeorClient.getPlan(request);
     }
 
+
+    @PostMapping("/plan")
+    public SearchResponse ISearch(@RequestBody SearchRequest request){
+        log.info("this is parms :{}", JSON.toJSONString(request));
+        return search.search(request);
+    }
 }

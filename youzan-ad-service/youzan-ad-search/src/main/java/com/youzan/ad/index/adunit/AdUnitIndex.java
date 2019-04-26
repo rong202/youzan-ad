@@ -1,6 +1,7 @@
 package com.youzan.ad.index.adunit;
 
 import com.youzan.ad.index.IndexAware;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 @Component
+@Slf4j
 public class AdUnitIndex implements IndexAware<Long,AdUnitObject> {
 
     private static Map<Long,AdUnitObject> objectMap;
@@ -50,10 +52,13 @@ public class AdUnitIndex implements IndexAware<Long,AdUnitObject> {
 
 
     public Set<Long> match(Integer positionType){
+        log.info("AdUnitIndex positionType-{}",positionType);
+        log.info("AdUnitIndex objectMap-{}",objectMap);
         HashSet<Long> adUnitIdSet = new HashSet<>();
 
         objectMap.forEach((k,v)->{
             if(AdUnitObject.isAdSlotTypeOK(positionType,v.getPositionType())){
+                log.info("----------------------------");
                 adUnitIdSet.add(k);
             }
         });
