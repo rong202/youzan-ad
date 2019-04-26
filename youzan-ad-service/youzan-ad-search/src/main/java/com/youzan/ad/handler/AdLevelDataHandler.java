@@ -68,7 +68,9 @@ public class AdLevelDataHandler {
                 adCreativeTbale.getMaterialType(),
                 adCreativeTbale.getHeight(),
                 adCreativeTbale.getWidth(),
-                adCreativeTbale.getAuditStatus()
+                adCreativeTbale.getAuditStatus(),
+                adCreativeTbale.getAdUrl()
+
         );
 
         handleBinLongEvent(DataTable.of(CreativeIndex.class),
@@ -92,7 +94,8 @@ public class AdLevelDataHandler {
                 adUnitTable.getUnitId(),
                 adUnitTable.getUnitStatus(),
                 adUnitTable.getPositionType(),
-                adUnitTable.getPlanId()
+                adUnitTable.getPlanId(),
+                null
         );
 
         handleBinLongEvent(

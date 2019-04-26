@@ -25,4 +25,5 @@ public class AdCreativeTbale {
     private Integer width;
 
     private Integer auditStatus;
+    private String adUrl;
 }

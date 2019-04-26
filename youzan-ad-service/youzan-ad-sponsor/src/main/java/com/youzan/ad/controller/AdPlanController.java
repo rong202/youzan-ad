@@ -40,6 +40,13 @@ public class AdPlanController {
        return  planService.createPlan(planRequest);
     }
 
+    @GetMapping("/{id}")
+    public  AdPlanResponse findPlanById(@PathVariable Long id){
+        log.info("this is planid:{}",id);
+        return null;
+
+    }
+
     /**
      * 修改推广计划
      * @param planRequest

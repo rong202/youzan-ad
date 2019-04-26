@@ -3,12 +3,14 @@ package com.youzan.ad.controller;
 import com.alibaba.fastjson.JSON;
 import com.youzan.ad.exception.AdException;
 import com.youzan.ad.service.IUserService;
-import com.youzan.ad.vo.CommonResponse;
 import com.youzan.ad.vo.CreateUserResponse;
 import com.youzan.ad.vo.CreateUserResquest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by baimugudu on 2019/3/27
@@ -35,4 +37,7 @@ public class UserController {
                 JSON.toJSONString(createUserResquest));
         return userService.createUser(createUserResquest);
     }
+
+
+
 }
