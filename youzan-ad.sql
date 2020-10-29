@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `ad_creative`;
 CREATE TABLE `ad_creative` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `name` varchar(48) NOT NULL COMMENT '创意名称1',
-  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '物料类型(图片, 视频)',
+  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '物料类型(图片, 视频)1111',
   `material_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '物料子类型(图片: bmp, jpg 等等)',
   `height` int(10) NOT NULL DEFAULT '0' COMMENT '高度',
   `width` int(10) NOT NULL DEFAULT '0' COMMENT '宽度',
