@@ -9,6 +9,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * @author baimugudu
  */
 
+/**
+ * 测试下git
+ */
+
 
 @EnableEurekaServer
 @SpringBootApplication
